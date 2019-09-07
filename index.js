@@ -2,6 +2,7 @@ import { tweets } from './tweet';
 import fs from 'fs';
 import crypto from 'crypto';
 import ora from 'ora';
+import escapeStringRegexp from 'escape-string-regexp';
 
 const frontMatterTemplate = `
 +++
@@ -12,7 +13,7 @@ draft = false
 image = "{TWEET_IMAGE}"
 slug = "{SLUG}"
 tags = ["tweet"]
-title = "{TITLE}"
+title = """{TITLE}"""
 +++
 {CONTENT}
 `;
@@ -30,7 +31,8 @@ tweets.forEach((tweet) => {
   } else {
     created++;
     let content = frontMatterTemplate.replace('{TWEET_DATE}', tweet.created_at);
-    content = content.replace('{TITLE}', `${tweet.full_text.replace('"', "'").replace(/\//gi,'').replace(/\\/gi,'').substring(0,25).replace(/\n/gi, '')}...`);
+    //content = content.replace('{TITLE}', `${tweet.full_text.replace('"', "'").replace(/\//gi,'').replace(/\\/gi,'').substring(0,25).replace(/\n/gi, '')}...`);
+    content = content.replace('{TITLE}', `${tweet.full_text.substring(0,25)}...`).replace(/\\/g, '&#92;');
     content = content.replace('{TWEET_DATE}', tweet.created_at);
     content = content.replace('{CONTENT}', tweet.full_text.replace('"', "'"));
     let fileName = `${crypto.createHash('sha1').update(tweet.created_at).digest('hex')}`
