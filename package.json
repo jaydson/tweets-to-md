@@ -1,0 +1,17 @@
+{
+  "name": "tweets-to-md",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --experimental-modules --es-module-specifier-resolution=node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ora": "^3.4.0"
+  }
+}
