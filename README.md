@@ -61,8 +61,7 @@ draft = false
 image = "{TWEET_IMAGE}"
 slug = "7dffcf9a1433013e157d31838bef66565002208f"
 tags = ["tweet"]
-title = """Social Detox/Rehab
-https:..."""
+title = """Social Detox/Rehab https:..."""
 +++
 Social Detox/Rehab
 https://t.co/OcqN37iCFo
