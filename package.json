@@ -12,7 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "escape-string-regexp": "^2.0.0",
     "ora": "^3.4.0"
   }
 }

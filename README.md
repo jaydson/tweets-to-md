@@ -11,6 +11,9 @@ I was on Twitter since 2009 and I didn't want to lose the good part of it (there
 export const tweets = [ {  
 ```
 3. Copy `tweet.js` to `./`
+4. Change the `config.js` file with your information
+Note that I'm using the `+++` mark in my front matter, but you can easily change for `---`, etc.  
+5. Don't forget to copy your tweet media folder to your structure and change the path you want to serve your images  
 
 ## How to run
 ```
