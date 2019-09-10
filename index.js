@@ -15,19 +15,25 @@ tweets.forEach((tweet) => {
   counter++;
   let imgPath;
   let hasMedia = false;
+
   if (tweet.in_reply_to_status_id || tweet.in_reply_to_user_id) {
     ignored++;
   } else {
     created++;
-    if (tweet.extended_entities && tweet.extended_entities.media.length > 0) {
-      hasMedia = true;
-      const media = tweet.extended_entities.media[0];
-      imgPath = `${config.tweetMediaPath}/${tweet.id}-${media.media_url.split('media/')[1]}`;
-    }
     let content = config.frontMatterTemplate.replace('{TWEET_DATE}', tweet.created_at);
     content = content.replace('{TITLE}', `${tweet.full_text.substring(0,25)}...`).replace(/\\/g, '&#92;');
     content = content.replace('{TWEET_DATE}', tweet.created_at);
     content = content.replace('{CONTENT}', tweet.full_text.replace('"', "'"));
+    content = content.replace('{TWEET_ID}', tweet.id);
+    if (tweet.extended_entities && tweet.extended_entities.media.length > 0) {
+      hasMedia = true;
+      const media = tweet.extended_entities.media[0];
+      imgPath = `${config.tweetMediaPath}/${tweet.id}-${media.media_url.split('media/')[1]}`;
+      content = content.replace('{TWEET_IMAGE}', imgPath);
+    } else {
+      content = content.replace('{TWEET_IMAGE}', 'No media found for this Tweet');
+    }
+
     if (hasMedia) {
       content = content + `\n![](${imgPath})`;
     }

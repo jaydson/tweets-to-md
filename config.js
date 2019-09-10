@@ -10,6 +10,7 @@ slug = "{SLUG}"
 tags = ["tweet"]
 title = """{TITLE}"""
 tweet = true
+tweet_url = "https://twitter.com/jaydson/status/{TWEET_ID}"
 +++
 {CONTENT}
 `,
