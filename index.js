@@ -39,6 +39,16 @@ tweets.forEach((tweet) => {
     }
     let fileName = `${crypto.createHash('sha1').update(tweet.created_at).digest('hex')}`
     content = content.replace('{SLUG}', fileName);
+   
+    fs.stat('./posts', function(err) {
+    if (!err) {
+        console.log('file or directory exists');
+    }
+    else if (err.code === 'ENOENT') {
+        console.log('file or directory does not exist');
+        fs.mkdirSync('./posts');
+    }
+    });
     fs.writeFile(`./posts/${fileName}.md`, content, (err) => {
       if(err) {
         return console.log(err);
