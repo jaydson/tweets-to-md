@@ -9,6 +9,10 @@ let created = 0;
 let counter = 0;
 const length  = tweets.length;
 
+if (!fs.existsSync('./posts')) {
+  fs.mkdirSync('./posts');
+}
+
 const spinner = ora('Converting Tweets to posts').start();
 
 tweets.forEach((tweet) => {
