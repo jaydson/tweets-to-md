@@ -16,7 +16,7 @@ tweets.forEach((tweet) => {
   let imgPath;
   let hasMedia = false;
 
-  if (tweet.in_reply_to_status_id || tweet.in_reply_to_user_id) {
+  if (config.ignoreReplies && (tweet.in_reply_to_status_id || tweet.in_reply_to_user_id)) {
     ignored++;
   } else {
     created++;
