@@ -14,7 +14,8 @@ tweet_url = "https://twitter.com/jaydson/status/{TWEET_ID}"
 +++
 {CONTENT}
 `,
-  tweetMediaPath: '/images/tweet-media'
+  tweetMediaPath: '/images/tweet-media',
+  ignoreReplies: true,
 }
 
 export default config;
